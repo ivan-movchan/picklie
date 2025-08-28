@@ -8,8 +8,7 @@
 #include <conio.h>
 #include <windows.h>
 
-#define KEY_SPACE 0x20
-#define KEY_ESCAPE 0x1B
+#define EXIT_KEY 0x1B
 
 int main(int argc, char** argv)
 {
@@ -36,11 +35,11 @@ int main(int argc, char** argv)
         };
     };
     
-    while (Command != KEY_ESCAPE)
+    while (Command != EXIT_KEY)
     {
         Command = getch();
         
-        if (Command == KEY_SPACE)
+        if (Command != EXIT_KEY)
         {
             if (GetCursorPos(&CursorPoint) != 0)
             {
