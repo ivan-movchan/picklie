@@ -5,11 +5,12 @@ SOURCE = picklie.c
 TARGET = picklie.exe
 
 CC = gcc
-CCFLAGS = -O2 -Wl,-s -static
+CCFLAGS = -O2 -Wl,-s
+LDFLAGS = -lgdi32 -static
 
 VERSION = \""0.1\""
 
 all: picklie
 
 picklie:
-	$(CC) $(CCFLAGS) -DVERSION=$(VERSION) -o $(TARGET) $(SOURCE)
+	$(CC) $(CCFLAGS) -DVERSION=$(VERSION) -o $(TARGET) $(SOURCE) $(LDFLAGS)
