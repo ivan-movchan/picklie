@@ -12,7 +12,7 @@ CCFLAGS = -O2 -Wl,-s
 LDFLAGS = -lgdi32 -static
 WINDRES = windres
 
-VERSION = \""0.1\""
+VERSION = \""1.0\""
 
 all: picklie-res picklie
 
