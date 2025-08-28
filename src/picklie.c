@@ -19,6 +19,14 @@ int main(int argc, char** argv)
     int CursorX, CursorY, ColorR, ColorG, ColorB;
     char Command = '\0';
     
+    char ConsoleTitle[32];
+    sprintf(ConsoleTitle, "Picklie v%s", VERSION);
+    
+    if (SetConsoleTitle(ConsoleTitle) == 0)
+    {
+        printf("Failed to set console window title (0x%08X).\n", GetLastError());
+    };
+    
     for (int i = 0; i < argc; i++)
     {
         if (!strcmp(argv[i], "-v") || !strcmp(argv[i], "--version"))
