@@ -1,10 +1,10 @@
 # Makefile: the GNU make build file for Picklie.
 # See LICENSE for copyright and licensing details.
 
-SOURCE = picklie.c
+SOURCE = src/picklie.c
 TARGET = picklie.exe
 
-RES_SOURCE = picklie.rc
+RES_SOURCE = src/picklie.rc
 RES_TARGET = picklie.res
 
 CC = gcc
