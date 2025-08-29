@@ -8,62 +8,63 @@
 #include <conio.h>
 #include <windows.h>
 
+#define LAST_ERROR GetLastError()
+
+#define TITLE_FORMAT "Picklie v%s"
+
 #define EXIT_KEY 0x1B
 
 int main(int argc, char** argv)
 {
-    HDC ScreenDC;
-    POINT CursorPoint;
-    COLORREF Color;
-    int CursorX, CursorY, ColorR, ColorG, ColorB;
-    char Command = '\0';
+    HDC screen_dc;
+    POINT cursor;
+    COLORREF color;
+    int r, g, b;
+    char command = '\0';
     
-    char ConsoleTitle[32];
-    sprintf(ConsoleTitle, "Picklie v%s", VERSION);
+    char title[32];
+    sprintf(title, TITLE_FORMAT, VERSION);
     
-    if (SetConsoleTitle(ConsoleTitle) == 0)
+    if (SetConsoleTitle(title) == 0)
     {
-        printf("Failed to set console window title (0x%08X).\n", GetLastError());
+        printf("Failed to set console window title (0x%08X).\n", LAST_ERROR);
     };
     
     for (int i = 0; i < argc; i++)
     {
         if (!strcmp(argv[i], "-v") || !strcmp(argv[i], "--version"))
         {
-            printf("Picklie v%s\nCopyright (c) 2025 Ivan Movchan\nhttps://github.com/ivan-movchan/picklie\n", VERSION);
+            printf("%s\nCopyright (c) 2025 Ivan Movchan\nhttps://github.com/ivan-movchan/picklie\n", title);
             return 0;
         };
     };
     
-    while (Command != EXIT_KEY)
+    while (command != EXIT_KEY)
     {
-        Command = getch();
+        command = getch();
         
-        if (Command != EXIT_KEY)
+        if (command != EXIT_KEY)
         {
-            if (GetCursorPos(&CursorPoint) != 0)
+            if (GetCursorPos(&cursor) != 0)
             {
-                CursorX = CursorPoint.x;
-                CursorY = CursorPoint.y;
+                screen_dc = GetDC(0);
                 
-                ScreenDC = GetDC(0);
-                
-                if (ScreenDC == NULL)
+                if (screen_dc == NULL)
                 {
-                    printf("Failed to get display device context handler (0x%08X).\n", GetLastError());
+                    printf("Failed to get display device context handler (0x%08X).\n", LAST_ERROR);
                 };
                 
-                Color = GetPixel(ScreenDC, CursorX, CursorY);
+                color = GetPixel(screen_dc, cursor.x, cursor.y);
                 
-                ColorR = GetRValue(Color);
-                ColorG = GetGValue(Color);
-                ColorB = GetBValue(Color);
+                r = GetRValue(color);
+                g = GetGValue(color);
+                b = GetBValue(color);
                 
-                printf("%dx, %dy: #%02X%02X%02X (%d, %d, %d)\n", CursorX, CursorY, ColorR, ColorG, ColorB, ColorR, ColorG, ColorB);
+                printf("%dx, %dy: #%02X%02X%02X (%d, %d, %d)\n", cursor.x, cursor.y, r, g, b, r, g, b);
             }
             else
             {
-                printf("Failed to get cursor position (0x%08X).\n", GetLastError());
+                printf("Failed to get cursor position (0x%08X).\n", LAST_ERROR);
             };
         };
     };
