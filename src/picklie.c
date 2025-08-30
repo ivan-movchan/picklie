@@ -8,9 +8,15 @@
 #include <conio.h>
 #include <windows.h>
 
+#ifdef _WIN64
+    #define ARCH 64
+#else
+    #define ARCH 86
+#endif
+
 #define LAST_ERROR GetLastError()
 
-#define TITLE_FORMAT "Picklie v%s"
+#define TITLE_FORMAT "Picklie v%s [x%d]"
 
 #define EXIT_KEY 0x1B
 
@@ -23,7 +29,7 @@ int main(int argc, char** argv)
     char command = '\0';
     
     char title[32];
-    sprintf(title, TITLE_FORMAT, VERSION);
+    sprintf(title, TITLE_FORMAT, VERSION, ARCH);
     
     if (SetConsoleTitle(title) == 0)
     {
