@@ -18,6 +18,7 @@
 
 #define TITLE_FORMAT "Picklie v%s [x%d]"
 
+#define PICK_KEY 0x0D
 #define EXIT_KEY 0x1B
 
 int main(int argc, char** argv)
@@ -49,7 +50,7 @@ int main(int argc, char** argv)
     {
         command = getch();
         
-        if (command != EXIT_KEY)
+        if (command == PICK_KEY)
         {
             if (GetCursorPos(&cursor) != 0)
             {
@@ -66,7 +67,7 @@ int main(int argc, char** argv)
                 g = GetGValue(color);
                 b = GetBValue(color);
                 
-                printf("%dx, %dy: #%02X%02X%02X (%d, %d, %d)\n", cursor.x, cursor.y, r, g, b, r, g, b);
+                printf("#%02X%02X%02X (%3d, %3d, %3d)\n", r, g, b, r, g, b);
             }
             else
             {
