@@ -8,16 +8,19 @@ RES_SOURCE = src/picklie.rc
 RES_TARGET = picklie.res
 
 CC = gcc
+WINDRES = windres
+
 CCFLAGS = -O2 -Wl,-s
 LDFLAGS = -lgdi32 -static
-WINDRES = windres
 
 VERSION = \""1.0\""
 
 all: picklie-res picklie
 
 picklie-res:
-	$(WINDRES) -O coff -o $(RES_TARGET) $(RES_SOURCE)
+	@echo Building Picklie resource file...
+	@$(WINDRES) -O coff -o $(RES_TARGET) $(RES_SOURCE)
 
 picklie:
-	$(CC) $(CCFLAGS) -DVERSION=$(VERSION) -o $(TARGET) $(SOURCE) $(RES_TARGET) $(LDFLAGS)
+	@echo Building Picklie application...
+	@$(CC) $(CCFLAGS) -DVERSION=$(VERSION) -o $(TARGET) $(SOURCE) $(RES_TARGET) $(LDFLAGS)
