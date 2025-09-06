@@ -8,6 +8,8 @@
 
 </div>
 
+<br>
+
 **Picklie**&nbsp;&mdash; легковесная и минималистичная &laquo;пипетка&raquo; для Windows.
 
 ![](images/screenshot.png)

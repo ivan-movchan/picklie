@@ -8,6 +8,8 @@
 
 </div>
 
+<br>
+
 **Picklie** is a tiny and minimalistic color picker for Windows.
 
 ![](images/screenshot.png)
