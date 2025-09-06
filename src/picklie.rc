@@ -1,3 +1,8 @@
+/*
+ * picklie.res: the resource script of Picklie.
+ * See LICENSE for copyright and licensing details.
+ */
+
 #include <windows.h>
 
 1 ICON picklie.ico
