@@ -36,7 +36,7 @@
 
 ## История версий
 
-Смотрите файл <CHANGELOG-RU.md>.
+Смотрите файл [CHANGELOG-RU.md](CHANGELOG-RU.md).
 
 ## Участие в проекте
 

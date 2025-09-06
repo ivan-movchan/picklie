@@ -36,7 +36,7 @@ MinGW (GCC + GNU make) is required for building the program. [Clone this reposit
 
 ## Version history
 
-See <CHANGELOG.md> file.
+See [CHANGELOG.md](CHANGELOG.md) file.
 
 ## Contributing
 
